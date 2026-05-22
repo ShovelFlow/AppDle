@@ -33,9 +33,9 @@ class _GameListPage extends State<GameListPage> {
 
           return GridView.builder(
             padding: const EdgeInsets.all(12),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 1.4,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: MediaQuery.of(context).size.width < 800 ? 1 : 2,
+              mainAxisExtent: 150,
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
             ),

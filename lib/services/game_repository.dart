@@ -52,7 +52,7 @@ class GameRepository {
               name: json["name"],
               author: json["author"],
               version: json["version"],
-              bannerImage: p.join(folder.path, p.normalize(json["banner"]["banner_image"])),
+              bannerImage: p.join(folder.path, json["id"], p.normalize(json["banner"]["banner_image"])),
               bannerColor: json["banner"]["color"],
             ),
           );

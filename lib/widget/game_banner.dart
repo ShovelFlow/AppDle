@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class GameBanner extends StatelessWidget {
@@ -23,8 +25,6 @@ class GameBanner extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: SizedBox(
-          width: 250,
-          height: 140,
           child: Stack(
             fit: StackFit.expand,
             children: [
@@ -34,8 +34,8 @@ class GameBanner extends StatelessWidget {
               ),
 
               if (bannerPath.isNotEmpty)
-                Image.asset(
-                  bannerPath,
+                Image.file(
+                  File(bannerPath),
                   fit: BoxFit.cover,
                 ),
 

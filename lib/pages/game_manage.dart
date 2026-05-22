@@ -26,7 +26,7 @@ class _GameManagePage extends State<GameManagePage> {
               name: json["name"],
               author: json["author"],
               version: json["version"],
-              bannerImage: p.join(dir.path, 'games', p.normalize(json["banner"]["banner_image"])),
+              bannerImage: p.join(dir.path, 'games', json["id"], p.normalize(json["banner"]["banner_image"])),
               bannerColor: json["banner"]["color"],
           )
         );
