@@ -1,0 +1,36 @@
+{
+	"id":"Colors_ShovelFlow",
+	"name":"Colors",
+	"author":"ShovelFlow",
+	"version":"0.0-beta",
+	"format_version":1,
+	"banner":{
+		"color":"#00ff00",
+		"banner_image":"assets/banner.png"
+	},
+	"game":{
+		"type":"attribute",
+		"background_image":"",
+		"show_image":false,
+		"show_text":true,
+		"keys":{
+			"warm":{
+				"type":"boolean",
+				"order":1
+			},
+			"red":{
+				"type":"numeric",
+				"order":2,
+				"description":"How much percentage of red has this color"
+			},
+			"green":{
+				"type":"numeric",
+				"order":3
+			},
+			"blue":{
+				"type":"numeric",
+				"order":4
+			}
+		}
+	}
+}

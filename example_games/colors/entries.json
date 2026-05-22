@@ -1,0 +1,23 @@
+[
+	{
+		"name":"red",
+		"warm":true,
+		"red":100,
+		"green":0,
+		"blue":0
+	},
+	{
+		"name":"green",
+		"warm":false,
+		"red":0,
+		"green":100,
+		"blue":0
+	},
+	{
+		"name":"blue",
+		"warm":false,
+		"red":0,
+		"green":0,
+		"blue":100
+	}
+]
