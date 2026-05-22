@@ -3,7 +3,6 @@ import 'package:appdle/services/game_data.dart';
 import 'package:appdle/services/game_repository.dart';
 import 'package:appdle/services/import_service.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart' as p;
 
 class GameManagePage extends StatefulWidget {
   const GameManagePage({super.key});
@@ -17,18 +16,10 @@ class _GameManagePage extends State<GameManagePage> {
   Future<void> _importGame() async {
     try {
       final json = await ImportService.importGame();
-      final dir = await GameRepository.getAppDir();
 
       if (json != null && mounted) {
         GameRepository.instance.add(
-          GameData(
-              id: json["id"],
-              name: json["name"],
-              author: json["author"],
-              version: json["version"],
-              bannerImage: p.join(dir.path, 'games', json["id"], p.normalize(json["banner"]["banner_image"])),
-              bannerColor: json["banner"]["color"],
-          )
+          await GameData.generate(json)
         );
 
         ScaffoldMessenger.of(context).showSnackBar(

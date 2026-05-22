@@ -5,7 +5,8 @@
 	"version":"0.0-beta",
 	"format_version":1,
 	"banner":{
-		"color":"#00ff00",
+		"background_color":"#FFFFFF",
+		"text_color":"#FF75DA",
 		"banner_image":"assets/banner.png"
 	},
 	"game":{

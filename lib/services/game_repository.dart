@@ -4,7 +4,6 @@ import 'package:appdle/services/app_log.dart';
 import 'package:appdle/services/game_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart' as p;
 
 class GameRepository {
   static final GameRepository instance = GameRepository._internal();
@@ -47,14 +46,7 @@ class GameRepository {
           final json = jsonDecode(jsonStr);
 
           loadedGames.add(
-            GameData(
-              id: json["id"],
-              name: json["name"],
-              author: json["author"],
-              version: json["version"],
-              bannerImage: p.join(folder.path, json["id"], p.normalize(json["banner"]["banner_image"])),
-              bannerColor: json["banner"]["color"],
-            ),
+            await GameData.generate(json)
           );
         }
       }

@@ -1,22 +1,24 @@
 import 'dart:io';
 
+import 'package:appdle/services/game_data.dart';
 import 'package:flutter/material.dart';
 
 class GameBanner extends StatelessWidget {
-  final String name;
-  final String author;
-  final String bannerPath;
-  final Color color;
+  final GameData game;
   final VoidCallback? onTap;
 
   const GameBanner({
     super.key,
-    required this.name,
-    required this.author,
-    required this.bannerPath,
-    required this.color,
+    required this.game,
     this.onTap,
   });
+
+  
+  Color _parseColor(String value) {
+    final hex = value.replaceFirst('#', '');
+    final normalized = hex.length == 6 ? 'FF$hex' : hex;
+    return Color(int.parse(normalized, radix: 16));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +32,12 @@ class GameBanner extends StatelessWidget {
             children: [
 
               Container(
-                color: color,
+                color: _parseColor(game.bannerColor),
               ),
 
-              if (bannerPath.isNotEmpty)
+              if (game.bannerImage.isNotEmpty)
                 Image.file(
-                  File(bannerPath),
+                  File(game.bannerImage),
                   fit: BoxFit.cover,
                 ),
 
@@ -48,14 +50,20 @@ class GameBanner extends StatelessWidget {
                       MainAxisAlignment.end,
                   children: [
                     Text(
-                      name,
-                      style: const TextStyle(
+                      game.name,
+                      style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
+                        color: _parseColor(game.bannerTextColor),
                       ),
                     ),
 
-                    Text(author),
+                    Text(
+                      game.author, 
+                      style: TextStyle(
+                        color: _parseColor(game.bannerTextColor),
+                      ),
+                      ),
                   ],
                 ),
               ),

@@ -11,12 +11,6 @@ class GameListPage extends StatefulWidget {
 
 class _GameListPage extends State<GameListPage> {
 
-  Color _parseColor(String value) {
-    final hex = value.replaceFirst('#', '');
-    final normalized = hex.length == 6 ? 'FF$hex' : hex;
-    return Color(int.parse(normalized, radix: 16));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,10 +38,7 @@ class _GameListPage extends State<GameListPage> {
               final game = games[index];
 
               return GameBanner(
-                name: game.name,
-                author: game.author,
-                bannerPath: game.bannerImage,
-                color: _parseColor(game.bannerColor),
+                game: game,
                 onTap: () {
                   print("Abrir ${game.name}");
                 },
