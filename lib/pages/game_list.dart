@@ -1,3 +1,5 @@
+import 'package:appdle/services/game_repository.dart';
+import 'package:appdle/widget/game_banner.dart';
 import 'package:flutter/material.dart';
 
 class GameListPage extends StatefulWidget {
@@ -8,60 +10,51 @@ class GameListPage extends StatefulWidget {
 }
 
 class _GameListPage extends State<GameListPage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  Color _parseColor(String value) {
+    final hex = value.replaceFirst('#', '');
+    final normalized = hex.length == 6 ? 'FF$hex' : hex;
+    return Color(int.parse(normalized, radix: 16));
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text("titulin"),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+
+      body: ValueListenableBuilder(
+        valueListenable: GameRepository.instance.games,
+        builder: (context, games, _) {
+
+          if (games.isEmpty) {
+            return const Center(
+              child: Text("No games installed"),
+            );
+          }
+
+          return GridView.builder(
+            padding: const EdgeInsets.all(12),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 1.4,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+            itemCount: games.length,
+            itemBuilder: (context, index) {
+              final game = games[index];
+
+              return GameBanner(
+                name: game.name,
+                author: game.author,
+                bannerPath: game.bannerImage,
+                color: _parseColor(game.bannerColor),
+                onTap: () {
+                  print("Abrir ${game.name}");
+                },
+              );
+            },
+          );
+        },
       ),
     );
   }
