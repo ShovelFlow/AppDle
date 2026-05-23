@@ -1,7 +1,9 @@
 import 'package:appdle/localization/text_manager.dart';
+import 'package:appdle/services/app_log.dart';
 import 'package:appdle/services/game_data.dart';
 import 'package:appdle/services/game_repository.dart';
 import 'package:appdle/services/import_service.dart';
+import 'package:appdle/widget/game_banner.dart';
 import 'package:flutter/material.dart';
 
 class GameManagePage extends StatefulWidget {
@@ -55,17 +57,42 @@ class _GameManagePage extends State<GameManagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            const Text('DWASDA')
-          ],
-        ),
-      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _importGame,
         child: const Icon(Icons.add),
+      ),
+
+      body: ValueListenableBuilder(
+        valueListenable: GameRepository.instance.games,
+        builder: (context, games, _) {
+
+          if (games.isEmpty) {
+            return Center(
+              child: Text(TextManager.get('NO_GAMES_INSTALLED')),
+            );
+          }
+
+          return GridView.builder(
+            padding: const EdgeInsets.all(12),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: MediaQuery.of(context).size.width < 800 ? 1 : 2,
+              mainAxisExtent: 150,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+            ),
+            itemCount: games.length,
+            itemBuilder: (context, index) {
+              final game = games[index];
+
+              return GameBanner(
+                game: game,
+                onTap: () {
+                  AppLog.i("Manage game ${game.id}");
+                },
+              );
+            },
+          );
+        },
       ),
     );
   }

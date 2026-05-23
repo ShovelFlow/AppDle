@@ -20,8 +20,18 @@ class GameRepository {
   bool loaded = false;
 
   void add (GameData gd) {
-    games.value = [...games.value, gd];
-    AppLog.d("Added game $gd");
+  final gameList = games.value;
+    final index = gameList.indexWhere((g) => g.id == gd.id);
+
+    if (index == -1) {
+      games.value = [...games.value, gd];
+      AppLog.d("Added game $gd");
+    } else {
+      final updated = List<GameData>.from(gameList);
+      updated[index] = gd;
+      games.value = updated;
+      AppLog.d("Updated game $gd");
+    }
   }
 
   Future<void> loadGames() async {

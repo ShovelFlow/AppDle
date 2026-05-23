@@ -1,3 +1,5 @@
+import 'package:appdle/localization/text_manager.dart';
+import 'package:appdle/services/app_log.dart';
 import 'package:appdle/services/game_repository.dart';
 import 'package:appdle/widget/game_banner.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +22,8 @@ class _GameListPage extends State<GameListPage> {
         builder: (context, games, _) {
 
           if (games.isEmpty) {
-            return const Center(
-              child: Text("No games installed"),
+            return Center(
+              child: Text(TextManager.get('NO_GAMES_INSTALLED')),
             );
           }
 
@@ -40,7 +42,7 @@ class _GameListPage extends State<GameListPage> {
               return GameBanner(
                 game: game,
                 onTap: () {
-                  print("Abrir ${game.name}");
+                  AppLog.i("Opening game ${game.id}");
                 },
               );
             },
