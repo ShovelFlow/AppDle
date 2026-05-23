@@ -34,9 +34,22 @@ class GameRepository {
     }
   }
 
-  bool remove (GameData gd) {
-    AppLog.e("Remove game Not implemented (${gd.id})");
-    return false;
+  Future<bool> remove (GameData gd) async {
+    try {
+      final dir = await getAppDir();
+      final gameDir = Directory('${dir.path}${Platform.pathSeparator}games${Platform.pathSeparator}${gd.id}');
+      
+      if (await gameDir.exists()) {
+        await gameDir.delete(recursive: true);
+        games.value = games.value.where((g) => g.id != gd.id).toList();
+        AppLog.i("Removed game ${gd.id}");
+        return true;
+      }
+      return false;
+    } catch (e) {
+      AppLog.e("Error removing game ${gd.id}: $e");
+      return false;
+    }
   }
 
   Future<Map<String, dynamic>> getGameJsons(GameData gd) async {
@@ -52,7 +65,7 @@ class GameRepository {
       if (entry is File && entry.path.toLowerCase().endsWith('.json')) {
         final content = await entry.readAsString();
         final filename = entry.path.split(Platform.pathSeparator).last;
-        final key = filename.substring(0, filename.length - 5); // Remove .json
+        final key = filename.substring(0, filename.length - 5);
         jsonData[key] = jsonDecode(content);
       }
     }

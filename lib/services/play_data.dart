@@ -41,7 +41,7 @@ class PlayData {
       for (var entry in listEntries) {
         final keyName = entry.key.toString().toUpperCase();
         final map = Map<String, dynamic>.from(jsonEntries[entry.key]);
-        map['name'] = keyName; // asegurar name en cada entry
+        map['name'] = keyName;
         entries[keyName] = map;
       }
     }
@@ -58,13 +58,13 @@ class PlayData {
 
     final entriesList = entries.entries.toList();
     final randomGuess = entriesList[Random().nextInt(entriesList.length)];
-    currentGuess = Map<String, dynamic>.from(randomGuess.value); // copia, no referencia
+    currentGuess = Map<String, dynamic>.from(randomGuess.value);
     currentGuess['name'] = randomGuess.key;
 
     tableNotication = TableNotification.reset;
     tableNotifier.value = 0;
 
-    AppLog.d("New Guess: ${currentGuess.toString()}");
+    AppLog.i("New Guess: ${currentGuess.toString()}");
   }
 
   void guess(String guess) {
