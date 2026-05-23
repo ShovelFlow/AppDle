@@ -20,18 +20,23 @@ class GameRepository {
   bool loaded = false;
 
   void add (GameData gd) {
-  final gameList = games.value;
+    final gameList = games.value;
     final index = gameList.indexWhere((g) => g.id == gd.id);
 
     if (index == -1) {
       games.value = [...games.value, gd];
-      AppLog.d("Added game $gd");
+      AppLog.i("Added game $gd");
     } else {
       final updated = List<GameData>.from(gameList);
       updated[index] = gd;
       games.value = updated;
-      AppLog.d("Updated game $gd");
+      AppLog.i("Updated game $gd");
     }
+  }
+
+  bool remove (GameData gd) {
+    AppLog.e("Remove game Not implemented (${gd.id})");
+    return false;
   }
 
   Future<void> loadGames() async {

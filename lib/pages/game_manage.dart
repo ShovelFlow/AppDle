@@ -1,4 +1,5 @@
 import 'package:appdle/localization/text_manager.dart';
+import 'package:appdle/pages/game_info.dart';
 import 'package:appdle/services/app_log.dart';
 import 'package:appdle/services/game_data.dart';
 import 'package:appdle/services/game_repository.dart';
@@ -93,6 +94,12 @@ class _GameManagePage extends State<GameManagePage> {
                 game: game,
                 onTap: () {
                   AppLog.i("Manage game ${game.id}");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => GameInfoPage(game: game),
+                    ),
+              );
                 },
               );
             },
