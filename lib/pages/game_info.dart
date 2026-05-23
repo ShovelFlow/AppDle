@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:appdle/localization/text_manager.dart';
 import 'package:appdle/services/game_data.dart';
 import 'package:appdle/services/game_repository.dart';
@@ -49,9 +51,15 @@ class _GameInfoPage extends State<GameInfoPage> {
     );
   }
 
-  Text _validValue(String? text) {
+  Text _validValue(String? text, [String? emptyText]) {
     if (text != null && text.isNotEmpty) {
       return Text(text);
+    }
+    if (emptyText != null) {
+      return Text(
+        emptyText,
+        style: TextStyle(color: Theme.of(context).disabledColor),
+      );
     }
     return Text(
       TextManager.get("NO_VALUE"),
@@ -68,6 +76,53 @@ class _GameInfoPage extends State<GameInfoPage> {
         _validValue(value)
       ]
     );
+  }
+  List<TableRow> _rowKeys(dynamic gameJsons) {
+    List<TableRow> list = [];
+    final TextStyle headerTextStyle = TextStyle(
+      color: Theme.of(context).disabledColor,
+      decoration: TextDecoration.underline,
+      fontSize: 16
+    );
+
+    list.add(
+      TableRow(
+        children: [
+          Text(
+            TextManager.get("INFO_KEYS_NAME_HEADER"),
+            style: headerTextStyle,
+          ),
+          Text(
+            TextManager.get("INFO_KEYS_TYPE_HEADER"),
+            style: headerTextStyle,
+          ),
+          Text(
+            TextManager.get("INFO_KEYS_DESC_HEADER"),
+            style: headerTextStyle,
+          ),
+        ]
+      )
+    );
+    
+    // Validamos que "keys" exista y sea un Mapa
+    var keysData = gameJsons["data"]["game"]["keys"];
+    if (keysData is Map) {
+      // Recorremos el mapa usando .entries (contiene key y value)
+      for (var entry in keysData.entries) {
+        final keyName = entry.key;
+        final keyValue = entry.value;
+        list.add(
+          TableRow(
+            children: [
+              Text(keyName.toString()), 
+              _validValue(keyValue["type"]?.toString()),
+              _validValue(keyValue["description"]?.toString(), "")
+            ]
+          )
+        );
+      }
+    }
+    return list;
   }
 
   @override
@@ -101,28 +156,50 @@ class _GameInfoPage extends State<GameInfoPage> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             children: [
 
-              // if (widget.game.bannerImage.isNotEmpty)
-              //   Image.file(
-              //     File(widget.game.bannerImage),
-              //     fit: BoxFit.cover,
-              //   ),
-              
               Text(
                 widget.game.name,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              const SizedBox(height: 16),
 
+              if (widget.game.bannerImage.isNotEmpty)
+                SizedBox(
+                  height: 150,
+                  child:  Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: Image.file(
+                      File(widget.game.bannerImage),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              
+              const SizedBox(height: 16),
               Table(
                 columnWidths: const {
                   0: FlexColumnWidth(1),
                   1: FlexColumnWidth(2)
                 },
                 children: [
-                  _row("INFO_DESCRIPTION", gameJsons["data"]["description"]),
                   _row("INFO_AUTHOR", widget.game.author),
                   _row("INFO_VERSION", widget.game.version),
+                  _row("INFO_GAME_TYPE", gameJsons["data"]["game"]["type"]),
+                  _row("INFO_DESCRIPTION", gameJsons["data"]["description"]),
                 ],
+              ),
+
+              const SizedBox(height: 16),
+              Text(
+                TextManager.get("INFO_KEYS_HEADER"),
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+
+              Table(
+                columnWidths: const {
+                  0: FlexColumnWidth(1),
+                  1: FlexColumnWidth(1),
+                  2: FlexColumnWidth(1)
+                },
+                children: _rowKeys(gameJsons)
               )
 
             ],
