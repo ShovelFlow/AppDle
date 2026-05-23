@@ -1,3 +1,4 @@
+import 'package:appdle/main.dart';
 import 'package:appdle/services/play_data.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,10 @@ class GamePlayTable extends StatefulWidget {
   @override
   State<GamePlayTable> createState() => _GamePlayTableState();
 }
+
+const HEADER_PADDING = 10.0;
+const CELL_HEIGHT = 80.0;
+const CELL_WIDTH = 80.0;
 
 class _GamePlayTableState extends State<GamePlayTable> {
   final List<String> _tries = [];
@@ -43,31 +48,83 @@ class _GamePlayTableState extends State<GamePlayTable> {
   }
 
   Row generateRow(String guessKey) {
-    final cols = widget.playData.attributes.keys.toList();
     final rowData = widget.playData.entries[guessKey];
-    rowData?.addAll({"name":guessKey});
-
     return Row(
-      children: cols.map((colName) {
-        return SizedBox(
-          width: 80,
-          child: Text(
-            _validString(rowData?[colName].toString()),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Theme.of(context).textTheme.bodyMedium?.color,
-            ),
-          ),
-        );
+      children: widget.playData.attributes.entries.map((entry) {
+        String valueKey = _validString(rowData?[entry.key].toString());
+        switch (entry.value) {
+          case "name":
+            return _cellBox(valueKey, Theme.of(context).cardColor);
+
+          case "numeric":
+            final double n1 = double.tryParse(widget.playData.currentGuess[entry.key].toString())??0.0;
+            final double n2 = double.tryParse(valueKey)??0.0;
+            if (n1 == n2) {
+              return _cellBox(valueKey, MyApp.of(context).correctColor);
+            } else {
+              return _cellBoxNumeric(valueKey, n1 < n2);
+            }
+          default:
+            if (widget.playData.currentGuess[entry.key].toString() == valueKey) {
+              return _cellBox(valueKey, MyApp.of(context).correctColor);
+            } else {
+              return _cellBox(valueKey, MyApp.of(context).wrongColor);
+            }
+        }
       }).toList(),
     );
   }
+  Container _cellBox(String text, Color backgroundColor) {
+    return Container(
+      width: CELL_WIDTH,
+      height: CELL_HEIGHT,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+      ),
+      child: Center(
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+  Container _cellBoxNumeric(String text, bool lower) {
+    return Container(
+      width: CELL_WIDTH,
+      height: CELL_HEIGHT,
+      decoration: BoxDecoration(
+        color: MyApp.of(context).wrongColor,
+      ),
+      child:  Stack(
+        fit: StackFit.expand,
+        children: [
+          Opacity(
+            opacity: 0.22,
+            child: FittedBox(
+              fit: BoxFit.cover,
+              child: Icon(
+                lower ? Icons.keyboard_double_arrow_down : Icons.keyboard_double_arrow_up,
+                color: Colors.black,
+              ),
+            ),
+          ),
 
+          Center(
+            child: Text (
+              text,
+              textAlign: TextAlign.center,
+            )
+          ),
+        ]
+      ),
+    );
+  }
   String _validString(dynamic str) {
-    if (str != null) {
-      return str.toString();
+    if (str == null || str.toString().isEmpty) {
+      return "-";
     }
-    return "-";
+    return str.toString();
   }
 
   @override
@@ -78,26 +135,24 @@ class _GamePlayTableState extends State<GamePlayTable> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: SizedBox(
-        // Calculamos el ancho exacto que sumarán todas tus columnas juntas
-        width: cols.length * 80.0,
+        width: cols.length * CELL_WIDTH,
         child: Column(
           children: [
-            // 1. ENCABEZADO FIJO
             Container(
               color: Theme.of(context).dividerColor.withAlpha(25),
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              padding: const EdgeInsets.symmetric(vertical: HEADER_PADDING),
               child: Row(
                 children: cols.map((keyName) => SizedBox(
-                          width: 80,
-                          child: Text(
-                            keyName,
-                            style: TextStyle(
-                              color: Theme.of(context).disabledColor,
-                              fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    )).toList(),
+                  width: CELL_WIDTH,
+                  child: Text(
+                    keyName,
+                    style: TextStyle(
+                      color: Theme.of(context).disabledColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                )).toList(),
               ),
             ),
             
@@ -108,7 +163,6 @@ class _GamePlayTableState extends State<GamePlayTable> {
                 itemBuilder: (context, index) {
 
                   return Container(
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
                     decoration: BoxDecoration(
                       border: Border(bottom: BorderSide(color: Theme.of(context).dividerColor)),
                     ),

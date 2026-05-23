@@ -59,13 +59,16 @@ class PlayData {
 
     tableNotication = TableNotification.reset;
     tableNotifier.value = 0;
-    
+
     AppLog.d("New Guess: ${currentGuess.toString()}");
   }
 
   void guess(String guess) {
     AppLog.d("Player guessed: $guess");
     if (!entries.containsKey(guess)) {
+      return;
+    }
+    if (guesses.contains(guess)) {
       return;
     }
     guesses.add(guess);

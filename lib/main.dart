@@ -22,6 +22,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   bool darkMode = true;
   Color primaryColor = Colors.cyanAccent;
+  Color correctColor = Colors.green;
+  Color wrongColor = Colors.red;
+  Color neutralColor = Colors.yellow;
 
   void toggleTheme(bool value) {
     setState(() {
