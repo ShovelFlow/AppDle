@@ -3,21 +3,27 @@ import 'dart:convert';
 
 import 'package:appdle/services/app_log.dart';
 import 'package:appdle/services/game_repository.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:archive/archive.dart';
 
 class ImportService {
   static Future<Map<String, dynamic>?> importGame() async {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['zip'],
+    
+    const typeGroup = XTypeGroup(
+      label: 'zip',
+      extensions: ['zip'],
     );
 
-    if (result == null) return null;
+    final fileResult = await openFile(
+      acceptedTypeGroups: [typeGroup],
+    );
+
+    if (fileResult == null) return null;
+
 
     AppLog.i("Extracting new game");
 
-    final file = File(result.files.single.path!);
+    final file = File(fileResult.path);
     final bytes = await file.readAsBytes();
     final archive = ZipDecoder().decodeBytes(bytes);
 
