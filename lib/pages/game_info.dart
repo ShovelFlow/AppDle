@@ -15,6 +15,14 @@ class GameInfoPage extends StatefulWidget {
 
 class _GameInfoPage extends State<GameInfoPage> {
 
+  Future<Map<String, dynamic>>? _gameJsonsFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _gameJsonsFuture = GameRepository.instance.getGameJsons(widget.game);
+  }
+
   void _deleteGame() {
     showDialog(
       context: context,
@@ -41,6 +49,27 @@ class _GameInfoPage extends State<GameInfoPage> {
     );
   }
 
+  Text _validValue(String? text) {
+    if (text != null && text.isNotEmpty) {
+      return Text(text);
+    }
+    return Text(
+      TextManager.get("NO_VALUE"),
+      style: TextStyle(color: Theme.of(context).disabledColor),
+    );
+  }
+  TableRow _row(String header, String? value) {
+    return TableRow(
+      children: [
+        Text(
+          TextManager.get(header),
+          style: TextStyle(color: Theme.of(context).disabledColor),
+        ),
+        _validValue(value)
+      ]
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,44 +84,50 @@ class _GameInfoPage extends State<GameInfoPage> {
         ],
       ),
 
-      body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        children: [
+      body: FutureBuilder<Map<String, dynamic>>(
+        future: _gameJsonsFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('${snapshot.error}'));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return Center(child: Text(TextManager.get("ERROR_NO_GAME_INFO")));
+          }
 
-          // if (widget.game.bannerImage.isNotEmpty)
-          //   Image.file(
-          //     File(widget.game.bannerImage),
-          //     fit: BoxFit.cover,
-          //   ),
-          
-          Text(
-            widget.game.name,
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          const SizedBox(height: 16),
+          final gameJsons = snapshot.data!;
 
-          Table(
-            columnWidths: const {
-              0: FlexColumnWidth(1),
-              1: FlexColumnWidth(2)
-            },
+          return ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             children: [
-              TableRow(
-                children: [
-                  Text(TextManager.get("INFO_AUTHOR")),
-                  Text(widget.game.author)
-                ]
-              ),
-              TableRow(
-                children: [
-                  Text(TextManager.get("INFO_VERSION")),
-                  Text(widget.game.version)
-                ]
-              )
-            ],
-          )
 
-        ],
+              // if (widget.game.bannerImage.isNotEmpty)
+              //   Image.file(
+              //     File(widget.game.bannerImage),
+              //     fit: BoxFit.cover,
+              //   ),
+              
+              Text(
+                widget.game.name,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              const SizedBox(height: 16),
+
+              Table(
+                columnWidths: const {
+                  0: FlexColumnWidth(1),
+                  1: FlexColumnWidth(2)
+                },
+                children: [
+                  _row("INFO_DESCRIPTION", gameJsons["data"]["description"]),
+                  _row("INFO_AUTHOR", widget.game.author),
+                  _row("INFO_VERSION", widget.game.version),
+                ],
+              )
+
+            ],
+          );
+        },
       ),
     );
   }

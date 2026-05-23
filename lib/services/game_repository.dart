@@ -39,6 +39,29 @@ class GameRepository {
     return false;
   }
 
+  Future<Map<String, dynamic>> getGameJsons(GameData gd) async {
+    final jsonData = <String, dynamic>{};
+    final dir = await getAppDir();
+    final gameDir = Directory('${dir.path}${Platform.pathSeparator}games${Platform.pathSeparator}${gd.id}');
+
+    if (!await gameDir.exists()) {
+      return jsonData;
+    }
+
+    for (final entry in gameDir.listSync()) {
+      if (entry is File && entry.path.toLowerCase().endsWith('.json')) {
+        final content = await entry.readAsString();
+        final filename = entry.path.split(Platform.pathSeparator).last;
+        final key = filename.substring(0, filename.length - 5); // Remove .json
+        jsonData[key] = jsonDecode(content);
+      }
+    }
+
+    return jsonData;
+  }
+
+  
+
   Future<void> loadGames() async {
     AppLog.i("Loading games");
     final dir = await getAppDir();
