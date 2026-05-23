@@ -51,14 +51,16 @@ class _GamePlayTableState extends State<GamePlayTable> {
     final rowData = widget.playData.entries[guessKey];
     return Row(
       children: widget.playData.attributes.entries.map((entry) {
-        String valueKey = _validString(rowData?[entry.key].toString());
+        final rawValue = entry.key == "name" ? guessKey : rowData?[entry.key];
+        final valueKey = _validString(rawValue);
+
         switch (entry.value) {
           case "name":
             return _cellBox(valueKey, Theme.of(context).cardColor);
 
           case "numeric":
-            final double n1 = double.tryParse(widget.playData.currentGuess[entry.key].toString())??0.0;
-            final double n2 = double.tryParse(valueKey)??0.0;
+            final double n1 = double.tryParse(widget.playData.currentGuess[entry.key].toString()) ?? 0.0;
+            final double n2 = double.tryParse(valueKey) ?? 0.0;
             if (n1 == n2) {
               return _cellBox(valueKey, MyApp.of(context).correctColor);
             } else {

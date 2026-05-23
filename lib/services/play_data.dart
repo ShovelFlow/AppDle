@@ -16,10 +16,9 @@ class PlayData {
   TableNotification tableNotication = TableNotification.reset;
 
   PlayData();
-
   void fillData(dynamic json) {
     AppLog.i("Creating play data $json");
-    
+
     final keys = json['data']['game']['keys'];
     if (keys is Map) {
       final sortedKeys = keys.entries.toList();
@@ -28,7 +27,7 @@ class PlayData {
         final orderB = b.value['order'] ?? 99;
         return orderA.compareTo(orderB);
       });
-      if (json['data']['game']['show_text']??false == true) {
+      if (json['data']['game']['show_text'] ?? false == true) {
         attributes["name"] = "name";
       }
       for (var entry in sortedKeys) {
@@ -40,22 +39,27 @@ class PlayData {
     if (jsonEntries is Map) {
       final listEntries = jsonEntries.entries.toList();
       for (var entry in listEntries) {
-        entries[entry.key.toString().toUpperCase()] = Map<String, dynamic>.from(jsonEntries[entry.key]);
+        final keyName = entry.key.toString().toUpperCase();
+        final map = Map<String, dynamic>.from(jsonEntries[entry.key]);
+        map['name'] = keyName; // asegurar name en cada entry
+        entries[keyName] = map;
       }
     }
     restartPlay();
   }
 
   void restartPlay() {
-    if (entries.isEmpty) {return;}
+    if (entries.isEmpty) {
+      return;
+    }
 
     guesses = [];
     finished = false;
 
     final entriesList = entries.entries.toList();
     final randomGuess = entriesList[Random().nextInt(entriesList.length)];
-    currentGuess = randomGuess.value;
-    currentGuess.addAll({'name': randomGuess.key});
+    currentGuess = Map<String, dynamic>.from(randomGuess.value); // copia, no referencia
+    currentGuess['name'] = randomGuess.key;
 
     tableNotication = TableNotification.reset;
     tableNotifier.value = 0;

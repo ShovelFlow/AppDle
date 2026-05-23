@@ -27,12 +27,7 @@ class _GamePlayKeyboardState extends State<GamePlayKeyboard> {
 
   void _onKeyPressed(String key) {
     setState(() {
-      if (key == "ENTER") {
-        if (_currentInput.isNotEmpty) {
-          _guessWord();
-          _currentInput = "";
-        }
-      } else if (key == "BACK") {
+      if (key == "BACK") {
         if (_currentInput.isNotEmpty) {
           _currentInput = _currentInput.substring(0, _currentInput.length - 1);
         }
@@ -48,10 +43,12 @@ class _GamePlayKeyboardState extends State<GamePlayKeyboard> {
     }
   }
 
-  void _guessWord() {
-    widget.playData.guess(_currentInput);
+  void _guessWord(String str) {
+    setState(() {
+      _currentInput = "";
+      widget.playData.guess(str);
+    });
   }
-
   void _resetButton() {
     widget.playData.restartPlay();
     setState(() {});
@@ -84,6 +81,28 @@ class _GamePlayKeyboardState extends State<GamePlayKeyboard> {
     } else {
       return Column(
         children: [
+
+          ListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            children: widget.playData.entries.entries.where(
+              (entry) => entry.value["name"]
+                .toString()
+                .toUpperCase()
+                .startsWith(_currentInput.toUpperCase()),
+            ).take(_currentInput.isNotEmpty? 3:0).map((entry) => Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  textStyle: const TextStyle(fontSize: 16),
+                ),
+                onPressed: () => _guessWord(entry.value["name"].toString()),
+                child: Text(entry.value["name"].toString()))
+              ),
+            ).toList(),
+          ),
+          
           Container(
             width: double.infinity,
             margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -100,7 +119,7 @@ class _GamePlayKeyboardState extends State<GamePlayKeyboard> {
             child: _currentInput.isNotEmpty 
                 ? Text(_currentInput)
                 : Text(
-                    "Introduce el texto aquí...",
+                    TextManager.get("KEYBOARD_PLACEHOLDER"),
                     style: TextStyle(color: Theme.of(context).disabledColor),
                   ),
           ),
@@ -113,7 +132,7 @@ class _GamePlayKeyboardState extends State<GamePlayKeyboard> {
   Widget _buildKeyboard() {
     const List<String> row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
     const List<String> row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
-    const List<String> row3 = ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACK'];
+    const List<String> row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACK'];
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
