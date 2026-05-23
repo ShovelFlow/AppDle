@@ -1,5 +1,6 @@
 import 'package:appdle/localization/text_manager.dart';
 import 'package:appdle/pages/game_manage.dart';
+import 'package:appdle/pages/attribute/play_attribute.dart';
 import 'package:appdle/pages/settings.dart';
 import 'package:appdle/services/app_log.dart';
 import 'package:appdle/services/game_repository.dart';
@@ -73,6 +74,12 @@ class _GameListPage extends State<GameListPage> {
                 game: game,
                 onTap: () {
                   AppLog.i("Opening game ${game.id}");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => PlayAttributePage(game: game),
+                    ),
+                  );
                 },
               );
             },

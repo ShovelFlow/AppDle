@@ -104,10 +104,8 @@ class _GameInfoPage extends State<GameInfoPage> {
       )
     );
     
-    // Validamos que "keys" exista y sea un Mapa
     var keysData = gameJsons["data"]["game"]["keys"];
     if (keysData is Map) {
-      // Recorremos el mapa usando .entries (contiene key y value)
       for (var entry in keysData.entries) {
         final keyName = entry.key;
         final keyValue = entry.value;
