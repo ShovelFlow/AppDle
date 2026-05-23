@@ -1,4 +1,4 @@
-import 'package:appdle/pages/main_navigator.dart';
+import 'package:appdle/pages/game_list.dart';
 import 'package:appdle/services/game_repository.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
 
-      home: const MainNavigator(),
+      home: const GameListPage(),
     );
   }
 }

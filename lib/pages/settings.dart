@@ -26,7 +26,7 @@ class _SettingsPage extends State<SettingsPage> {
 
         return Scaffold(
             appBar: AppBar(
-                title: Text(TextManager.get("MN_SETTINGS")),
+              title: Text(TextManager.get("MN_SETTINGS")),
             ),
             
             body: ListView(

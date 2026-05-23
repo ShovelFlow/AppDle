@@ -57,9 +57,14 @@ class _GameManagePage extends State<GameManagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: _importGame,
-        child: const Icon(Icons.add),
+      appBar: AppBar(
+        title: Text(TextManager.get("MN_MANAGE")),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: _importGame,
+          ),
+        ]
       ),
 
       body: ValueListenableBuilder(

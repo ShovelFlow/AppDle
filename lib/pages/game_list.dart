@@ -1,4 +1,6 @@
 import 'package:appdle/localization/text_manager.dart';
+import 'package:appdle/pages/game_manage.dart';
+import 'package:appdle/pages/settings.dart';
 import 'package:appdle/services/app_log.dart';
 import 'package:appdle/services/game_repository.dart';
 import 'package:appdle/widget/game_banner.dart';
@@ -16,6 +18,34 @@ class _GameListPage extends State<GameListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      appBar: AppBar(
+        title: const Text("AppDle"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.apps),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const GameManagePage(),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const SettingsPage(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
 
       body: ValueListenableBuilder(
         valueListenable: GameRepository.instance.games,

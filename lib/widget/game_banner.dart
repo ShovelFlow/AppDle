@@ -26,49 +26,47 @@ class GameBanner extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
-        child: SizedBox(
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
 
-              Container(
-                color: _parseColor(game.bannerColor),
+            Container(
+              color: _parseColor(game.bannerColor),
+            ),
+
+            if (game.bannerImage.isNotEmpty)
+              Image.file(
+                File(game.bannerImage),
+                fit: BoxFit.cover,
               ),
 
-              if (game.bannerImage.isNotEmpty)
-                Image.file(
-                  File(game.bannerImage),
-                  fit: BoxFit.cover,
-                ),
-
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start,
-                  mainAxisAlignment:
-                      MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      game.name,
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: _parseColor(game.bannerTextColor),
-                      ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start,
+                mainAxisAlignment:
+                    MainAxisAlignment.end,
+                children: [
+                  Text(
+                    game.name,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: _parseColor(game.bannerTextColor),
                     ),
+                  ),
 
-                    Text(
-                      game.author, 
-                      style: TextStyle(
-                        color: _parseColor(game.bannerTextColor),
-                      ),
-					),
-                  ],
-                ),
+                  Text(
+                    game.author, 
+                    style: TextStyle(
+                      color: _parseColor(game.bannerTextColor),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
