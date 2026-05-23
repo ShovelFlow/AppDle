@@ -1,11 +1,19 @@
 import 'package:appdle/pages/game_list.dart';
 import 'package:appdle/services/game_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await GameRepository.instance.loadGames();
+
+  await SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual,
+    overlays: [
+      SystemUiOverlay.top,
+    ]
+  );
 
   runApp(const MyApp());
 }
