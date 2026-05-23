@@ -63,7 +63,7 @@ class GameBanner extends StatelessWidget {
                       style: TextStyle(
                         color: _parseColor(game.bannerTextColor),
                       ),
-                      ),
+					),
                   ],
                 ),
               ),

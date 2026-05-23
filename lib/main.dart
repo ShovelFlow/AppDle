@@ -1,15 +1,19 @@
 import 'package:appdle/pages/main_navigator.dart';
+import 'package:appdle/services/game_repository.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-	runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await GameRepository.instance.loadGames();
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  static _MyAppState of(BuildContext context) =>
-      context.findAncestorStateOfType<_MyAppState>()!;
+  static _MyAppState of(BuildContext context) => context.findAncestorStateOfType<_MyAppState>()!;
 
   @override
   State<MyApp> createState() => _MyAppState();
