@@ -1,6 +1,8 @@
 import 'package:appdle/localization/text_manager.dart';
 import 'package:appdle/main.dart';
+import 'package:appdle/services/settings_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class SettingsPage extends StatefulWidget {
     const SettingsPage({super.key});
@@ -10,6 +12,45 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPage extends State<SettingsPage> {
+  
+  void _showColorPickerDialog(BuildContext context, Color currentColor, Function(Color) onColorSelected) {
+    Color tempColor = currentColor;
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Select color"),
+          content: SingleChildScrollView(
+            child: ColorPicker(
+              pickerColor: currentColor,
+              onColorChanged: (color) {
+                tempColor = color;
+              },
+              enableAlpha: false,
+              displayThumbColor: true,
+              paletteType: PaletteType.hsvWithHue,
+              labelTypes: const [],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(TextManager.get("CANCEL")),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                onColorSelected(tempColor);
+                Navigator.pop(context);
+              },
+              child: Text(TextManager.get("CONFIRM")),
+            ),
+          ],
+        );
+      },
+    );
+    onColorSelected(tempColor);
+  }
     @override
     Widget build(BuildContext context) {
         final appState = MyApp.of(context);
@@ -48,6 +89,7 @@ class _SettingsPage extends State<SettingsPage> {
                                     if (value != null) {
                                         setState(() {
                                             TextManager.changeLanguage(value);
+                                            SettingsService.setLanguaje(value);
                                         });
                                     }
                                 }
@@ -84,6 +126,14 @@ class _SettingsPage extends State<SettingsPage> {
                                             },
                                             icon: Icon(Icons.circle, color: color),
                                         )
+                                    ,
+                                    IconButton(
+                                        onPressed: () {
+                                            _showColorPickerDialog(context, MyApp.of(context).primaryColor, MyApp.of(context).changePrimary);
+                                        },
+                                        icon: const Icon(Icons.palette_outlined),
+                                        tooltip: 'Color picker',
+                                    ),
                                 ]
                             )
                         )
