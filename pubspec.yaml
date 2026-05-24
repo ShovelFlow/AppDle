@@ -1,5 +1,5 @@
 name: appdle
-description: "A new Flutter project."
+description: "AppDle is a small personal proyect about creating and managing your 'dle' type games and playing them infinitely in your android, prioritazing battery usage, personalization and simplicity"
 publish_to: 'none' 
 
 version: 1.0.0+1
@@ -28,7 +28,7 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/icon.png"
   adaptive_icon_background: "#000000"
-  adaptive_icon_foreground: "assets/icon/icon.png"
+  adaptive_icon_foreground: "assets/icon.png"
   windows:
     generate: true
     image_path: "assets/icon.png"
