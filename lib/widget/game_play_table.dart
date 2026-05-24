@@ -58,20 +58,32 @@ class _GamePlayTableState extends State<GamePlayTable> {
           case "name":
             return _cellBox(valueKey, Theme.of(context).cardColor);
 
+          case "array":
+            final keyText = widget.playData.currentGuess[entry.key].toString();
+            if (keyText == valueKey) {
+              return _cellBox(valueKey, MyApp.of(context).correctColor);
+            }
+            final trimText =  valueKey.replaceFirst("[", "").replaceFirst("]", "");
+            for (var part in trimText.split(", ")) {
+              if (keyText.contains(part)) {
+                return _cellBox(trimText, MyApp.of(context).neutralColor);
+              }
+            }
+            return _cellBox(trimText, MyApp.of(context).wrongColor);
           case "numeric":
             final double n1 = double.tryParse(widget.playData.currentGuess[entry.key].toString()) ?? 0.0;
             final double n2 = double.tryParse(valueKey) ?? 0.0;
             if (n1 == n2) {
               return _cellBox(valueKey, MyApp.of(context).correctColor);
-            } else {
-              return _cellBoxNumeric(valueKey, n1 < n2);
             }
+            return _cellBoxNumeric(valueKey, n1 < n2);
+            
           default:
             if (widget.playData.currentGuess[entry.key].toString() == valueKey) {
               return _cellBox(valueKey, MyApp.of(context).correctColor);
-            } else {
-              return _cellBox(valueKey, MyApp.of(context).wrongColor);
             }
+            return _cellBox(valueKey, MyApp.of(context).wrongColor);
+            
         }
       }).toList(),
     );

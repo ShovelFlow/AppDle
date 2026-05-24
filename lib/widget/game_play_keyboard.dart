@@ -92,7 +92,7 @@ class _GamePlayKeyboardState extends State<GamePlayKeyboard> {
                 .toString()
                 .toUpperCase()
                 .startsWith(_currentInput.toUpperCase()),
-            ).take(_currentInput.isNotEmpty? 3:0).map((entry) => Padding(
+            ).take(_currentInput.isNotEmpty? 10:0).map((entry) => Padding(
               padding: const EdgeInsets.all(2.0),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(

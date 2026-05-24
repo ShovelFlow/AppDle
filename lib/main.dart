@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
   Color primaryColor = Colors.cyanAccent;
   Color correctColor = Colors.green;
   Color wrongColor = Colors.red;
-  Color neutralColor = Colors.yellow;
+  Color neutralColor = Colors.orange;
 
   void toggleTheme(bool value) {
     setState(() {
