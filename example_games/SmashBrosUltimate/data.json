@@ -1,0 +1,49 @@
+{
+	"id":"SSMU_ShovelFlow",
+	"name":"Smash Bros Ultimate",
+	"author":"ShovelFlow",
+	"version":"1.0",
+	"format_version":1,
+	"description":"An adaptation of the SmashDle app, you can find it here: https://smashdle.net/classic",
+	"banner":{
+		"background_color":"#000000",
+		"text_color":"#FFFFFF",
+		"banner_image":"assets/banner.png"
+	},
+	"game":{
+		"type":"attribute",
+		"background_image":"",
+		"show_image":true,
+		"show_text":false,
+		"keys":{
+			"Gender":{
+				"type":"enum",
+				"order":1
+			},
+			"Species":{
+				"type":"array",
+				"order":2
+			},
+			"Franchise":{
+				"type":"enum",
+				"order":3
+			},
+			"Weight":{
+				"type":"numeric",
+				"order":4
+			},
+			"First appearance":{
+				"type":"enum",
+				"order":5
+			},
+			"Platform of origin":{
+				"type":"enum",
+				"order":6
+			},
+			"Origin date":{
+				"type":"numeric",
+				"order":7
+			}
+		}
+	}
+}

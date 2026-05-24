@@ -1,0 +1,840 @@
+{
+  "Mario": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Mario Bros",
+    "Weight": 98,
+    "First appearance": "64",
+    "Platform of origin": "Arcade",
+    "Origin date": 1981
+  },
+  "Donkey Kong": {
+    "Gender": "Male",
+    "Species": "Kong",
+    "Franchise": "Donkey Kong",
+    "Weight": 127,
+    "First appearance": "64",
+    "Platform of origin": "Arcade",
+    "Origin date": 1981
+  },
+  "Link": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "The Legend of Zelda",
+    "Weight": 104,
+    "First appearance": "64",
+    "Platform of origin": "NES",
+    "Origin date": 1986
+  },
+  "Samus": {
+    "Gender": "Female",
+    "Species": [
+      "Augmented",
+      "Human"
+    ],
+    "Franchise": "Metroid",
+    "Weight": 108,
+    "First appearance": "64",
+    "Platform of origin": "NES",
+    "Origin date": 1986
+  },
+  "Dark Samus": {
+    "Gender": "Female",
+    "Species": [
+      "Augmented",
+      "Human",
+      "Metroid"
+    ],
+    "Franchise": "Metroid",
+    "Weight": 108,
+    "First appearance": "Ultimate",
+    "Platform of origin": "GameCube",
+    "Origin date": 2002
+  },
+  "Yoshi": {
+    "Gender": "Species",
+    "Species": "Yoshi",
+    "Franchise": "Yoshi",
+    "Weight": 104,
+    "First appearance": "64",
+    "Platform of origin": "SNES",
+    "Origin date": 1990
+  },
+  "Kirby": {
+    "Gender": "Male",
+    "Species": "Kirby",
+    "Franchise": "Kirby",
+    "Weight": 79,
+    "First appearance": "64",
+    "Platform of origin": "Game Boy",
+    "Origin date": 1992
+  },
+  "Fox": {
+    "Gender": "Male",
+    "Species": "Fox",
+    "Franchise": "Star Fox",
+    "Weight": 77,
+    "First appearance": "64",
+    "Platform of origin": "SNES",
+    "Origin date": 1993
+  },
+  "Pikachu": {
+    "Gender": "Species",
+    "Species": "Pokémon",
+    "Franchise": "Pokémon",
+    "Weight": 79,
+    "First appearance": "64",
+    "Platform of origin": "Game Boy",
+    "Origin date": 1996
+  },
+  "Luigi": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Mario",
+    "Weight": 97,
+    "First appearance": "64",
+    "Platform of origin": "Arcade",
+    "Origin date": 1983
+  },
+  "Ness": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "EarthBound",
+    "Weight": 94,
+    "First appearance": "64",
+    "Platform of origin": "SNES",
+    "Origin date": 1994
+  },
+  "Captain Falcon": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "F-Zero",
+    "Weight": 104,
+    "First appearance": "64",
+    "Platform of origin": "SNES",
+    "Origin date": 1990
+  },
+  "Jigglypuff": {
+    "Gender": "Species",
+    "Species": "Pokémon",
+    "Franchise": "Pokémon",
+    "Weight": 68,
+    "First appearance": "64",
+    "Platform of origin": "Game Boy",
+    "Origin date": 1996
+  },
+  "Peach": {
+    "Gender": "Female",
+    "Species": "Human",
+    "Franchise": "Mario",
+    "Weight": 89,
+    "First appearance": "Melee",
+    "Platform of origin": "NES",
+    "Origin date": 1985
+  },
+  "Daisy": {
+    "Gender": "Female",
+    "Species": "Human",
+    "Franchise": "Mario",
+    "Weight": 89,
+    "First appearance": "Ultimate",
+    "Platform of origin": "Game Boy",
+    "Origin date": 1989
+  },
+  "Bowser": {
+    "Gender": "Male",
+    "Species": "Koopa",
+    "Franchise": "Mario",
+    "Weight": 135,
+    "First appearance": "Melee",
+    "Platform of origin": "NES",
+    "Origin date": 1985
+  },
+  "Ice Climbers": {
+    "Gender": "Other",
+    "Species": "Human",
+    "Franchise": "Ice Climber",
+    "Weight": 92,
+    "First appearance": "Melee",
+    "Platform of origin": "Arcade",
+    "Origin date": 1984
+  },
+  "Sheik": {
+    "Gender": "Female",
+    "Species": "Human",
+    "Franchise": "The Legend of Zelda",
+    "Weight": 78,
+    "First appearance": "Melee",
+    "Platform of origin": "Nintendo 64",
+    "Origin date": 1998
+  },
+  "Zelda": {
+    "Gender": "Female",
+    "Species": "Human",
+    "Franchise": "The Legend of Zelda",
+    "Weight": 85,
+    "First appearance": "Melee",
+    "Platform of origin": "NES",
+    "Origin date": 1986
+  },
+  "Dr. Mario": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Mario",
+    "Weight": 98,
+    "First appearance": "Melee",
+    "Platform of origin": "Game Boy",
+    "Origin date": 1990
+  },
+  "Pichu": {
+    "Gender": "Species",
+    "Species": "Pokémon",
+    "Franchise": "Pokémon",
+    "Weight": 62,
+    "First appearance": "Melee",
+    "Platform of origin": "Game Boy Color",
+    "Origin date": 1999
+  },
+  "Falco": {
+    "Gender": "Male",
+    "Species": "Bird",
+    "Franchise": "Star Fox",
+    "Weight": 82,
+    "First appearance": "Melee",
+    "Platform of origin": "SNES",
+    "Origin date": 1993
+  },
+  "Marth": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Fire Emblem",
+    "Weight": 90,
+    "First appearance": "Melee",
+    "Platform of origin": "NES",
+    "Origin date": 1990
+  },
+  "Lucina": {
+    "Gender": "Female",
+    "Species": [
+      "Augmented",
+      "Human"
+    ],
+    "Franchise": "Fire Emblem",
+    "Weight": 90,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "3DS",
+    "Origin date": 2012
+  },
+  "Young Link": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "The Legend of Zelda",
+    "Weight": 88,
+    "First appearance": "Melee",
+    "Platform of origin": "Nintendo 64",
+    "Origin date": 1998
+  },
+  "Ganondorf": {
+    "Gender": "Male",
+    "Species": [
+      "Demon",
+      "Human"
+    ],
+    "Franchise": "The Legend of Zelda",
+    "Weight": 118,
+    "First appearance": "Melee",
+    "Platform of origin": "Nintendo 64",
+    "Origin date": 1998
+  },
+  "Mewtwo": {
+    "Gender": "Species",
+    "Species": "Pokémon",
+    "Franchise": "Pokémon",
+    "Weight": 79,
+    "First appearance": "Melee",
+    "Platform of origin": "Game Boy",
+    "Origin date": 1996
+  },
+  "Roy": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Fire Emblem",
+    "Weight": 95,
+    "First appearance": "Melee",
+    "Platform of origin": "GBA",
+    "Origin date": 2001
+  },
+  "Chrom": {
+    "Gender": "Male",
+    "Species": [
+      "Augmented",
+      "Human"
+    ],
+    "Franchise": "Fire Emblem",
+    "Weight": 95,
+    "First appearance": "Ultimate",
+    "Platform of origin": "3DS",
+    "Origin date": 2012
+  },
+  "Mr. Game & Watch": {
+    "Gender": "Male",
+    "Species": "Monochrome",
+    "Franchise": "Game & Watch",
+    "Weight": 75,
+    "First appearance": "Melee",
+    "Platform of origin": "Game & Watch",
+    "Origin date": 1980
+  },
+  "Meta Knight": {
+    "Gender": "Male",
+    "Species": "Unknown",
+    "Franchise": "Kirby",
+    "Weight": 80,
+    "First appearance": "Brawl",
+    "Platform of origin": "NES",
+    "Origin date": 1993
+  },
+  "Pit": {
+    "Gender": "Male",
+    "Species": "Angel",
+    "Franchise": "Kid Icarus",
+    "Weight": 96,
+    "First appearance": "Brawl",
+    "Platform of origin": "NES",
+    "Origin date": 1986
+  },
+  "Dark Pit": {
+    "Gender": "Male",
+    "Species": "Angel",
+    "Franchise": "Kid Icarus",
+    "Weight": 96,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "3DS",
+    "Origin date": 2012
+  },
+  "Zero Suit Samus": {
+    "Gender": "Female",
+    "Species": [
+      "Augmented",
+      "Human"
+    ],
+    "Franchise": "Metroid",
+    "Weight": 80,
+    "First appearance": "Brawl",
+    "Platform of origin": "GBA",
+    "Origin date": 1986
+  },
+  "Wario": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Wario",
+    "Weight": 107,
+    "First appearance": "Brawl",
+    "Platform of origin": "Game Boy",
+    "Origin date": 1992
+  },
+  "Snake": {
+    "Gender": "Male",
+    "Species": [
+      "Augmented",
+      "Human"
+    ],
+    "Franchise": "Metal Gear Solid",
+    "Weight": 106,
+    "First appearance": "Brawl",
+    "Platform of origin": "MSX2",
+    "Origin date": 1987
+  },
+  "Ike": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Fire Emblem",
+    "Weight": 107,
+    "First appearance": "Brawl",
+    "Platform of origin": "GameCube",
+    "Origin date": 2005
+  },
+  "Pokemon Trainer": {
+    "Gender": "Selectable",
+    "Species": [
+      "Human",
+      "Pokémon"
+    ],
+    "Franchise": "Pokémon",
+    "Weight": 75,
+    "First appearance": "Brawl",
+    "Platform of origin": "Game Boy",
+    "Origin date": 1996
+  },
+  "Diddy Kong": {
+    "Gender": "Male",
+    "Species": "Kong",
+    "Franchise": "Donkey Kong",
+    "Weight": 90,
+    "First appearance": "Brawl",
+    "Platform of origin": "SNES",
+    "Origin date": 1994
+  },
+  "Lucas": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "EarthBound",
+    "Weight": 94,
+    "First appearance": "Brawl",
+    "Platform of origin": "GBA",
+    "Origin date": 2006
+  },
+  "Sonic": {
+    "Gender": "Male",
+    "Species": "Hedgehog",
+    "Franchise": "Sonic the Hedgehog",
+    "Weight": 86,
+    "First appearance": "Brawl",
+    "Platform of origin": "Sega Genesis",
+    "Origin date": 1991
+  },
+  "King Dedede": {
+    "Gender": "Male",
+    "Species": "Bird",
+    "Franchise": "Kirby",
+    "Weight": 127,
+    "First appearance": "Brawl",
+    "Platform of origin": "Game Boy",
+    "Origin date": 1992
+  },
+  "Olimar": {
+    "Gender": "Male",
+    "Species": "Hocotatian",
+    "Franchise": "Pikmin",
+    "Weight": 79,
+    "First appearance": "Brawl",
+    "Platform of origin": "GameCube",
+    "Origin date": 2001
+  },
+  "Lucario": {
+    "Gender": "Species",
+    "Species": "Pokémon",
+    "Franchise": "Pokémon",
+    "Weight": 92,
+    "First appearance": "Brawl",
+    "Platform of origin": "Nintendo DS",
+    "Origin date": 2005
+  },
+  "R.O.B.": {
+    "Gender": "Male",
+    "Species": "Robot",
+    "Franchise": "R.O.B.",
+    "Weight": 106,
+    "First appearance": "Brawl",
+    "Platform of origin": "NES",
+    "Origin date": 1985
+  },
+  "Toon Link": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "The Legend of Zelda",
+    "Weight": 91,
+    "First appearance": "Brawl",
+    "Platform of origin": "GameCube",
+    "Origin date": 2002
+  },
+  "Wolf": {
+    "Gender": "Male",
+    "Species": "Wolf",
+    "Franchise": "Star Fox",
+    "Weight": 92,
+    "First appearance": "Brawl",
+    "Platform of origin": "Nintendo 64",
+    "Origin date": 1997
+  },
+  "Villager": {
+    "Gender": "",
+    "Species": "",
+    "Franchise": "",
+    "Weight": 999999,
+    "First appearance": "",
+    "Platform of origin": "",
+    "Origin date": 9999
+  },
+  "Mega Man": {
+    "Gender": "Male",
+    "Species": "Robot",
+    "Franchise": "Mega Man",
+    "Weight": 102,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "NES",
+    "Origin date": 1987
+  },
+  "Wii Fit Trainer": {
+    "Gender": "Selectable",
+    "Species": "Human",
+    "Franchise": "Wii Fit",
+    "Weight": 96,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "Wii",
+    "Origin date": 2007
+  },
+  "Rosalina & Luma": {
+    "Gender": "Female",
+    "Species": [
+      "Human",
+      "Luma"
+    ],
+    "Franchise": "Mario",
+    "Weight": 82,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "Wii",
+    "Origin date": 2007
+  },
+  "Little Mac": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Punch-Out!!",
+    "Weight": 87,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "NES",
+    "Origin date": 1984
+  },
+  "Greninja": {
+    "Gender": "Species",
+    "Species": "Pokémon",
+    "Franchise": "Pokémon",
+    "Weight": 88,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "3DS",
+    "Origin date": 2013
+  },
+  "Mii Brawler": {
+    "Gender": "Selectable",
+    "Species": "Human",
+    "Franchise": "SSB",
+    "Weight": 94,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "Wii",
+    "Origin date": 2006
+  },
+  "Mii Swordfighter": {
+    "Gender": "Selectable",
+    "Species": "Human",
+    "Franchise": "SSB",
+    "Weight": 100,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "Wii",
+    "Origin date": 2006
+  },
+  "Mii Gunner": {
+    "Gender": "Selectable",
+    "Species": "Human",
+    "Franchise": "SSB",
+    "Weight": 104,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "Wii",
+    "Origin date": 2006
+  },
+  "Palutena": {
+    "Gender": "Female",
+    "Species": "God",
+    "Franchise": "Kid Icarus",
+    "Weight": 91,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "NES",
+    "Origin date": 1986
+  },
+  "Pac-Man": {
+    "Gender": "Male",
+    "Species": "Pac-Person",
+    "Franchise": "Pac-Man",
+    "Weight": 95,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "Arcade",
+    "Origin date": 1980
+  },
+  "Robin": {
+    "Gender": "Selectable",
+    "Species": [
+      "Augmented",
+      "Human"
+    ],
+    "Franchise": "Fire Emblem",
+    "Weight": 95,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "3DS",
+    "Origin date": 2012
+  },
+  "Shulk": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Xenoblade",
+    "Weight": 97,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "Wii",
+    "Origin date": 2010
+  },
+  "Bowser Jr.": {
+    "Gender": "Selectable",
+    "Species": "Koopa",
+    "Franchise": "Mario",
+    "Weight": 108,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "GameCube",
+    "Origin date": 2002
+  },
+  "Duck Hunt Duo": {
+    "Gender": "Other",
+    "Species": [
+      "Bird",
+      "Dog"
+    ],
+    "Franchise": "Duck Hunt",
+    "Weight": 86,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "NES",
+    "Origin date": 1984
+  },
+  "Ryu": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Street Fighter",
+    "Weight": 103,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "Arcade",
+    "Origin date": 1987
+  },
+  "Ken": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Street Fighter",
+    "Weight": 103,
+    "First appearance": "Ultimate",
+    "Platform of origin": "Arcade",
+    "Origin date": 1987
+  },
+  "Cloud": {
+    "Gender": "Male",
+    "Species": [
+      "Augmented",
+      "Human"
+    ],
+    "Franchise": "Final Fantasy",
+    "Weight": 100,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "PlayStation",
+    "Origin date": 1997
+  },
+  "Corrin": {
+    "Gender": "Selectable",
+    "Species": [
+      "Dragon",
+      "Human"
+    ],
+    "Franchise": "Fire Emblem",
+    "Weight": 98,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "3DS",
+    "Origin date": 2015
+  },
+  "Bayonetta": {
+    "Gender": "Female",
+    "Species": [
+      "Augmented",
+      "Human"
+    ],
+    "Franchise": "Bayonetta",
+    "Weight": 81,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin":"Xbox 360",
+    "Origin date": 2009
+  },
+  "Inkling": {
+    "Gender": "Selectable",
+    "Species": "Inkling",
+    "Franchise": "Splatoon",
+    "Weight": 94,
+    "First appearance": "Ultimate",
+    "Platform of origin": "Wii U",
+    "Origin date": 2015
+  },
+  "Ridley": {
+    "Gender": "Male",
+    "Species": "Unknown",
+    "Franchise": "Metroid",
+    "Weight": 107,
+    "First appearance": "Ultimate",
+    "Platform of origin": "NES",
+    "Origin date": 1986
+  },
+  "Simon": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Castlevania",
+    "Weight": 107,
+    "First appearance": "Ultimate",
+    "Platform of origin": "NES",
+    "Origin date": 1986
+  },
+  "Richter": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Castlevania",
+    "Weight": 107,
+    "First appearance": "Ultimate",
+    "Platform of origin": "TurboGrafx-16",
+    "Origin date": 1993
+  },
+  "King K. Rool": {
+    "Gender": "Male",
+    "Species": "Crocodile",
+    "Franchise": "Donkey Kong",
+    "Weight": 133,
+    "First appearance": "Ultimate",
+    "Platform of origin": "SNES",
+    "Origin date": 1994
+  },
+  "Isabelle": {
+    "Gender": "Female",
+    "Species": "Dog",
+    "Franchise": "Animal Crossing",
+    "Weight": 88,
+    "First appearance": "Ultimate",
+    "Platform of origin": "3DS",
+    "Origin date": 2012
+  },
+  "Incineroar": {
+    "Gender": "Species",
+    "Species": "Pokémon",
+    "Franchise": "Pokémon",
+    "Weight": 116,
+    "First appearance": "Ultimate",
+    "Platform of origin": "3DS",
+    "Origin date": 2016
+  },
+  "Piranha Plant": {
+    "Gender": "Other",
+    "Species": "Plant",
+    "Franchise": "Mario",
+    "Weight": 112,
+    "First appearance": "Ultimate",
+    "Platform of origin": "NES",
+    "Origin date": 1985
+  },
+  "Joker": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Persona",
+    "Weight": 93,
+    "First appearance": "Ultimate",
+    "Platform of origin": "PlayStation 4",
+    "Origin date": 2016
+  },
+  "Hero": {
+    "Gender": "Male",
+    "Species": [
+      "Human",
+      "Hybrid"
+    ],
+    "Franchise": "Dragon Quest",
+    "Weight": 101,
+    "First appearance": "Ultimate",
+    "Platform of origin": "NES",
+    "Origin date": 1986
+  },
+  "Banjo & Kazooie": {
+    "Gender": "Other",
+    "Species": [
+      "Bear",
+      "Bird"
+    ],
+    "Franchise": "Banjo-Kazooie",
+    "Weight": 106,
+    "First appearance": "Ultimate",
+    "Platform of origin": "Nintendo 64",
+    "Origin date": 1997
+  },
+  "Terry": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "The King of Fighters",
+    "Weight": 108,
+    "First appearance": "Ultimate",
+    "Platform of origin": "Arcade",
+    "Origin date": 1991
+  },
+  "Byleth": {
+    "Gender": "Selectable",
+    "Species": [
+      "God",
+      "Human"
+    ],
+    "Franchise": "Fire Emblem",
+    "Weight": 97,
+    "First appearance": "Ultimate",
+    "Platform of origin": "Nintendo Switch",
+    "Origin date": 2019
+  },
+  "Min Min": {
+    "Gender": "Female",
+    "Species": [
+      "Augmented",
+      "Human"
+    ],
+    "Franchise": "ARMS",
+    "Weight": 104,
+    "First appearance": "Ultimate",
+    "Platform of origin": "Nintendo Switch",
+    "Origin date": 2017
+  },
+  "Steve": {
+    "Gender": "Selectable",
+    "Species": "Human",
+    "Franchise": "Minecraft",
+    "Weight": 92,
+    "First appearance": "Ultimate",
+    "Platform of origin": "Computer",
+    "Origin date": 2009
+  },
+  "Sephiroth": {
+    "Gender": "Male",
+    "Species": [
+      "Human",
+      "Jenova"
+    ],
+    "Franchise": "Final Fantasy",
+    "Weight": 79,
+    "First appearance": "Ultimate",
+    "Platform of origin": "PlayStation",
+    "Origin date": 1997
+  },
+  "Pyra / Mythra": {
+    "Gender": "Female",
+    "Species": [
+      "Blade",
+      "Human"
+    ],
+    "Franchise": "Xenoblade",
+    "Weight": 98,
+    "First appearance": "Ultimate",
+    "Platform of origin": "Nintendo Switch",
+    "Origin date": 2017
+  },
+  "Kazuya": {
+    "Gender": "Male",
+    "Species": [
+      "Demon",
+      "Human"
+    ],
+    "Franchise": "Tekken",
+    "Weight": 113,
+    "First appearance": "Ultimate",
+    "Platform of origin": "Arcade",
+    "Origin date": 1994
+  },
+  "Sora": {
+    "Gender": "Male",
+    "Species": "Human",
+    "Franchise": "Kingdom Hearts",
+    "Weight": 85,
+    "First appearance": "Ultimate",
+    "Platform of origin": "PlayStation 2",
+    "Origin date": 2002
+  }
+}
