@@ -75,6 +75,8 @@ class _GamePlayKeyboardState extends State<GamePlayKeyboard> {
                 child: const Icon(Icons.restart_alt),
               ),
             ),
+
+            const SizedBox(height: 24),
           ] 
         )
       );

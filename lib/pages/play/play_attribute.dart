@@ -58,29 +58,32 @@ class _PlayAttributePageState extends State<PlayAttributePage> {
         ]
       ),
 
-      body: FutureBuilder<Map<String, dynamic>>(
-        future: _gameJsonsFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text(TextManager.get("ERROR_NO_GAME_INFO")));
+      body: SafeArea(
+        maintainBottomViewPadding: true,
+        child: FutureBuilder<Map<String, dynamic>>(
+          future: _gameJsonsFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Center(child: Text('${snapshot.error}'));
+            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+              return Center(child: Text(TextManager.get("ERROR_NO_GAME_INFO")));
+            }
+            final gameJsons = snapshot.data!;
+            _playData.fillData(gameJsons);
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                
+                Expanded(
+                  child: GamePlayTable(playData: _playData),
+                ),
+                GamePlayKeyboard(playData: _playData)
+              ],
+            );
           }
-          final gameJsons = snapshot.data!;
-          _playData.fillData(gameJsons);
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              
-              Expanded(
-                child: GamePlayTable(playData: _playData),
-              ),
-              GamePlayKeyboard(playData: _playData)
-            ],
-          );
-        }
+        ),
       ),
     );
   }

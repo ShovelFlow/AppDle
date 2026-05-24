@@ -82,6 +82,10 @@ class _GamePlayTableState extends State<GamePlayTable> {
       height: CELL_HEIGHT,
       decoration: BoxDecoration(
         color: backgroundColor,
+        border: Border.all(
+          color: Color.fromARGB(59, 0, 0, 0),
+          width: 3.0,
+        ),
       ),
       child: Center(
         child: Text(
@@ -97,6 +101,10 @@ class _GamePlayTableState extends State<GamePlayTable> {
       height: CELL_HEIGHT,
       decoration: BoxDecoration(
         color: MyApp.of(context).wrongColor,
+        border: Border.all(
+          color: Color.fromARGB(59, 0, 0, 0),
+          width: 3.0,
+        ),
       ),
       child:  Stack(
         fit: StackFit.expand,
