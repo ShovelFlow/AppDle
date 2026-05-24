@@ -46,8 +46,7 @@ class ImportService {
 
     final gameId = data['id'];
 
-    final dir = await GameRepository.getAppDir();
-    final gameDir = Directory('${dir.path}${Platform.pathSeparator}games${Platform.pathSeparator}$gameId');
+    final gameDir = Directory('${GameRepository.appDir.path}${Platform.pathSeparator}games${Platform.pathSeparator}$gameId');
 
     if (!await gameDir.exists()) {
       await gameDir.create(recursive: true);

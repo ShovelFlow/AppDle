@@ -12,6 +12,8 @@ class GameRepository {
 
   ValueNotifier<List<GameData>> games = ValueNotifier<List<GameData>>([]);
 
+  static Directory appDir = Directory("");
+
   static Future<Directory> getAppDir() async {
     final dir = await getApplicationDocumentsDirectory();
     return Directory('${dir.path}${Platform.pathSeparator}AppDle');
@@ -36,8 +38,7 @@ class GameRepository {
 
   Future<bool> remove (GameData gd) async {
     try {
-      final dir = await getAppDir();
-      final gameDir = Directory('${dir.path}${Platform.pathSeparator}games${Platform.pathSeparator}${gd.id}');
+      final gameDir = Directory('${appDir.path}${Platform.pathSeparator}games${Platform.pathSeparator}${gd.id}');
       
       if (await gameDir.exists()) {
         await gameDir.delete(recursive: true);
@@ -54,8 +55,7 @@ class GameRepository {
 
   Future<Map<String, dynamic>> getGameJsons(GameData gd) async {
     final jsonData = <String, dynamic>{};
-    final dir = await getAppDir();
-    final gameDir = Directory('${dir.path}${Platform.pathSeparator}games${Platform.pathSeparator}${gd.id}');
+    final gameDir = Directory('${appDir.path}${Platform.pathSeparator}games${Platform.pathSeparator}${gd.id}');
 
     if (!await gameDir.exists()) {
       return jsonData;
@@ -77,8 +77,7 @@ class GameRepository {
 
   Future<void> loadGames() async {
     AppLog.i("Loading games");
-    final dir = await getAppDir();
-    final gamesDir = Directory('${dir.path}${Platform.pathSeparator}games');
+    final gamesDir = Directory('${appDir.path}${Platform.pathSeparator}games');
 
     if (!await gamesDir.exists()) {
       games = ValueNotifier<List<GameData>>([]);
@@ -97,7 +96,7 @@ class GameRepository {
           final json = jsonDecode(jsonStr);
 
           loadedGames.add(
-            await GameData.generate(json)
+            GameData.generate(json)
           );
         }
       }

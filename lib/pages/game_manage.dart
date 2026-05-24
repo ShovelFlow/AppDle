@@ -22,7 +22,7 @@ class _GameManagePage extends State<GameManagePage> {
 
       if (json != null && mounted) {
         GameRepository.instance.add(
-          await GameData.generate(json)
+          GameData.generate(json)
         );
 
         ScaffoldMessenger.of(context).showSnackBar(

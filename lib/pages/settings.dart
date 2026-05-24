@@ -130,9 +130,7 @@ class _SettingsPage extends State<SettingsPage> {
                             title: Text(TextManager.get("ST_THEME")),
                             value: appState.darkMode,
                             onChanged: (value) {
-                                setState(() {
-                                    MyApp.of(context).toggleTheme(value);
-                                });
+                                MyApp.of(context).toggleTheme(value);
                             }
                         )
                     ),

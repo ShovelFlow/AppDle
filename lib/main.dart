@@ -9,6 +9,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await SettingsService.init();
+  GameRepository.appDir = await GameRepository.getAppDir();
   await GameRepository.instance.loadGames();
 
   await SystemChrome.setEnabledSystemUIMode(
