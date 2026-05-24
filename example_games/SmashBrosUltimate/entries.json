@@ -448,13 +448,13 @@
     "Origin date": 1997
   },
   "Villager": {
-    "Gender": "",
-    "Species": "",
-    "Franchise": "",
-    "Weight": 999999,
-    "First appearance": "",
-    "Platform of origin": "",
-    "Origin date": 9999
+    "Gender": "Selectable",
+    "Species": "Human",
+    "Franchise": "Animal Crossing",
+    "Weight": 92,
+    "First appearance": "3DS/Wii U",
+    "Platform of origin": "Nintendo 64",
+    "Origin date": 2001
   },
   "Mega Man": {
     "Gender": "Male",
