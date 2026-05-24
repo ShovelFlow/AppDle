@@ -26,24 +26,24 @@ class SettingsService {
     await _prefs.setInt('primaryColor', color.toARGB32());
   }
   static Color getCorrectColor() {
-    final value = _prefs.getInt('primaryColor');
+    final value = _prefs.getInt('correctColor');
     return value != null ? Color(value) : Colors.green;
   }
   static Future<void> setCorrectColor(Color color) async {
-    await _prefs.setInt('primaryColor', color.toARGB32());
+    await _prefs.setInt('correctColor', color.toARGB32());
   }
   static Color getWrongColor() {
-    final value = _prefs.getInt('primaryColor');
+    final value = _prefs.getInt('wrongColor');
     return value != null ? Color(value) : Colors.red;
   }
   static Future<void> setWrongColor(Color color) async {
-    await _prefs.setInt('primaryColor', color.toARGB32());
+    await _prefs.setInt('wrongColor', color.toARGB32());
   }
   static Color getNeutralColor() {
-    final value = _prefs.getInt('primaryColor');
+    final value = _prefs.getInt('neutralColor');
     return value != null ? Color(value) : Colors.orange;
   }
   static Future<void> setNeutralColor(Color color) async {
-    await _prefs.setInt('primaryColor', color.toARGB32());
+    await _prefs.setInt('neutralColor', color.toARGB32());
   }
 }

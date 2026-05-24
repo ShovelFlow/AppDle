@@ -20,7 +20,7 @@ class _SettingsPage extends State<SettingsPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("Select color"),
+          title: const Text(""),
           content: SingleChildScrollView(
             child: ColorPicker(
               pickerColor: currentColor,
@@ -41,6 +41,8 @@ class _SettingsPage extends State<SettingsPage> {
             ElevatedButton(
               onPressed: () {
                 onColorSelected(tempColor);
+                setState(() {
+                });
                 Navigator.pop(context);
               },
               child: Text(TextManager.get("CONFIRM")),
@@ -51,6 +53,28 @@ class _SettingsPage extends State<SettingsPage> {
     );
     onColorSelected(tempColor);
   }
+
+  ListTile _createColorCard(String textKey, Color color, Function(Color) onColorSelected){
+    return ListTile(
+      leading: const Icon(Icons.palette),
+      title: Text(TextManager.get(textKey)),
+      trailing: Container(
+        width: 24,
+        height: 24,
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+          border: Border.all(color: Colors.white24),
+        ),
+      ),
+      onTap: () {
+        _showColorPickerDialog(context, color, onColorSelected);
+        setState(() {
+        });
+      }
+    );
+  }
+
     @override
     Widget build(BuildContext context) {
         final appState = MyApp.of(context);
@@ -127,17 +151,29 @@ class _SettingsPage extends State<SettingsPage> {
                                             icon: Icon(Icons.circle, color: color),
                                         )
                                     ,
-                                    IconButton(
-                                        onPressed: () {
-                                            _showColorPickerDialog(context, MyApp.of(context).primaryColor, MyApp.of(context).changePrimary);
-                                        },
-                                        icon: const Icon(Icons.palette_outlined),
-                                        tooltip: 'Color picker',
-                                    ),
                                 ]
                             )
                         )
                     ),
+
+                    // Title
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        TextManager.get("ST_GAME_COLORS"),
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                    ),
+                    // Theme - Other three colors
+                    Card(
+                      child: _createColorCard("ST_GAME_COLOR_CORRECT", MyApp.of(context).correctColor, MyApp.of(context).changeCorrect)
+                    ),
+                    Card(
+                      child: _createColorCard("ST_GAME_COLOR_WRONG", MyApp.of(context).wrongColor, MyApp.of(context).changeWrong)
+                    ),
+                    Card(
+                      child: _createColorCard("ST_GAME_COLOR_NEUTRAL", MyApp.of(context).neutralColor, MyApp.of(context).changeNeutral)
+                    )
                 ]
             )
         );
