@@ -13,8 +13,7 @@
 	"game":{
 		"type":"attribute",
 		"background_image":"",
-		"show_image":true,
-		"show_text":false,
+		"show_image":"assets/characters",
 		"keys":{
 			"Gender":{
 				"type":"enum",

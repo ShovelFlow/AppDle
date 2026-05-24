@@ -72,14 +72,26 @@ class _PlayAttributePageState extends State<PlayAttributePage> {
             }
             final gameJsons = snapshot.data!;
             _playData.fillData(gameJsons);
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            return Stack(
               children: [
-                
-                Expanded(
-                  child: GamePlayTable(playData: _playData),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 200,
+                  child: ClipRect(
+                    child: Center(child:GamePlayTable(playData: _playData)),
+                  ),
                 ),
-                GamePlayKeyboard(playData: _playData)
+
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: ClipRect(
+                    child: GamePlayKeyboard(playData: _playData),
+                  ),
+                ),
               ],
             );
           }

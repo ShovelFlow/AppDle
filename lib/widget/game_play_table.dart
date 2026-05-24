@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:appdle/main.dart';
+import 'package:appdle/services/app_log.dart';
 import 'package:appdle/services/play_data.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart' as p;
 
 class GamePlayTable extends StatefulWidget {
   const GamePlayTable({super.key, required this.playData});
@@ -56,6 +60,9 @@ class _GamePlayTableState extends State<GamePlayTable> {
 
         switch (entry.value) {
           case "name":
+            if (widget.playData.imagePath.isNotEmpty) {
+              return _cellImageBox(rowData?["image_name"]??valueKey, Theme.of(context).cardColor);
+            }
             return _cellBox(valueKey, Theme.of(context).cardColor);
 
           case "array":
@@ -83,7 +90,6 @@ class _GamePlayTableState extends State<GamePlayTable> {
               return _cellBox(valueKey, MyApp.of(context).correctColor);
             }
             return _cellBox(valueKey, MyApp.of(context).wrongColor);
-            
         }
       }).toList(),
     );
@@ -104,6 +110,33 @@ class _GamePlayTableState extends State<GamePlayTable> {
           text,
           textAlign: TextAlign.center,
         ),
+      ),
+    );
+  }
+  Container _cellImageBox(String text, Color backgroundColor) {
+    return Container(
+      width: CELL_WIDTH,
+      height: CELL_HEIGHT,
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        border: Border.all(color: Color.fromARGB(59, 0, 0, 0), width: 3.0),
+      ),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Center(child: Text(text, textAlign: TextAlign.center)),
+
+          Image.file(
+            File(
+              p.join(widget.playData.imagePath,"$text.png"),
+            ),
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              AppLog.e("Image not found: ${p.join(widget.playData.imagePath,"$text.png")}");
+              return const SizedBox.shrink();
+            },
+          ),
+        ],
       ),
     );
   }
